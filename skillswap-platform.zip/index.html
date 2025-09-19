@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Trade Skills, Not Money</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/11.0.8/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>SkillSwap</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link" data-page="landing">Home</a>
+                <a href="#" class="nav-link" data-page="discover">Discover</a>
+                <a href="#" class="nav-link" data-page="dashboard">Dashboard</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="nav-auth">
+                <button class="btn btn-outline btn-sm" id="loginBtn">Sign In</button>
+                <button class="btn btn-primary btn-sm" id="registerBtn">Get Started</button>
+            </div>
+            <div class="nav-user hidden">
+                <div class="user-avatar">
+                    <img id="userAvatar" src="" alt="User">
+                </div>
+                <div class="user-dropdown">
+                    <div class="dropdown-menu">
+                        <a href="#" data-page="profile"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" data-page="trades"><i class="fas fa-handshake"></i> My Trades</a>
+                        <a href="#" id="adminLink" class="hidden"><i class="fas fa-shield-alt"></i> Admin</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div id="landingPage" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-left">
+                        <h1 class="hero-title">
+                            Trade Skills,<br>
+                            <span class="text-gradient">Not Money</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Join the world's first skill-exchange platform. Learn guitar, teach coding, 
+                            master design – all through the power of knowledge sharing.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary btn-lg" id="heroGetStarted">
+                                Get Started Free
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="btn btn-outline btn-lg">
+                                <i class="fas fa-play"></i>
+                                Watch Demo
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">10K+</span>
+                                <span class="stat-label">Active Users</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Skills</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">25K+</span>
+                                <span class="stat-label">Trades</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-right">
+                        <div class="hero-illustration">
+                            <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/597484f38252658f10f02c67e644ab27/53bdf629-0631-43e4-864e-b7962c77c58d/2032bbbe.png" alt="SkillSwap Architecture" class="illustration-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose SkillSwap?</h2>
+                    <p>Experience the future of learning through collaborative skill exchange</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon coral">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3>Direct Skill Trading</h3>
+                        <p>Trade your expertise directly with others. No money, just knowledge exchange.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon teal">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Global Community</h3>
+                        <p>Connect with learners and teachers from around the world in our vibrant community.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon purple">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Gamified Learning</h3>
+                        <p>Earn badges, track progress, and unlock achievements as you learn and teach.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon orange">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Real-time Chat</h3>
+                        <p>Communicate seamlessly with your skill exchange partners through integrated messaging.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It Works</h2>
+                    <p>Start trading skills in just four simple steps</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Create Your Profile</h3>
+                            <p>List skills you can teach and skills you want to learn</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Find Perfect Matches</h3>
+                            <p>Browse skills and connect with compatible learning partners</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Make the Trade</h3>
+                            <p>Propose trades and start learning from each other</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Learn & Grow</h3>
+                            <p>Complete trades, leave reviews, and earn badges</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Users Say</h2>
+                    <p>Join thousands of satisfied skill traders</p>
+                </div>
+                <div class="testimonials-grid" id="testimonialsContainer">
+                    <!-- Testimonials will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>SkillSwap</span>
+                        </div>
+                        <p>The world's first skill-exchange platform where knowledge meets opportunity.</p>
+                        <div class="social-links">
+                            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Platform</h4>
+                        <ul>
+                            <li><a href="#">How It Works</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Success Stories</a></li>
+                            <li><a href="#">Mobile App</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Forums</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Ambassador Program</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Safety</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 SkillSwap. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-link active" data-tab="overview">
+                        <i class="fas fa-home"></i>
+                        Overview
+                    </a>
+                    <a href="#" class="sidebar-link" data-tab="recommendations">
+                        <i class="fas fa-lightbulb"></i>
+                        Recommendations
+                    </a>
+                    <a href="#" class="sidebar-link" data-tab="activity">
+                        <i class="fas fa-clock"></i>
+                        Recent Activity
+                    </a>
+                    <a href="#" class="sidebar-link" data-tab="progress">
+                        <i class="fas fa-chart-line"></i>
+                        Progress
+                    </a>
+                </nav>
+            </aside>
+            <main class="dashboard-content">
+                <div class="dashboard-tab active" id="overview">
+                    <div class="dashboard-header">
+                        <h1>Welcome back, <span id="dashboardUserName">User</span>!</h1>
+                        <p>Here's what's happening with your skills today</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon coral">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="totalTrades">0</h3>
+                                <p>Total Trades</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon teal">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="averageRating">0.0</h3>
+                                <p>Average Rating</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="totalBadges">0</h3>
+                                <p>Badges Earned</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="skillsOffering">0</h3>
+                                <p>Skills Offering</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-tab" id="recommendations">
+                    <div class="section-header">
+                        <h2>Recommended For You</h2>
+                        <p>Skills we think you'd love to learn</p>
+                    </div>
+                    <div class="recommendations-grid" id="recommendationsContainer">
+                        <!-- Recommendations will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="dashboard-tab" id="activity">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <p>Your latest interactions and updates</p>
+                    </div>
+                    <div class="activity-feed" id="activityFeed">
+                        <!-- Activity will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="dashboard-tab" id="progress">
+                    <div class="section-header">
+                        <h2>Your Progress</h2>
+                        <p>Track your learning journey and achievements</p>
+                    </div>
+                    <div class="progress-section">
+                        <div class="badges-showcase" id="userBadges">
+                            <!-- User badges will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Discover Page -->
+    <div id="discoverPage" class="page">
+        <div class="discover-header">
+            <div class="container">
+                <h1>Discover Skills</h1>
+                <p>Find the perfect skill match for your learning journey</p>
+                <div class="search-filters">
+                    <div class="search-bar">
+                        <input type="text" id="skillSearch" placeholder="Search skills..." class="form-control">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <select id="categoryFilter" class="form-control">
+                        <option value="">All Categories</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Design">Design</option>
+                        <option value="Music">Music</option>
+                        <option value="Languages">Languages</option>
+                        <option value="Visual Arts">Visual Arts</option>
+                        <option value="Analytics">Analytics</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Media">Media</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="skills-grid" id="skillsGrid">
+                <!-- Skills will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="page">
+        <div class="profile-layout">
+            <div class="profile-left">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img id="profileAvatar" src="" alt="Profile">
+                        <div class="avatar-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profileName">User Name</h2>
+                        <p id="profileUsername">@username</p>
+                        <p id="profileLocation">Location</p>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <span class="stat-number" id="profileTrades">0</span>
+                            <span class="stat-label">Trades</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-number" id="profileRating">0.0</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-number" id="profileBadges">0</span>
+                            <span class="stat-label">Badges</span>
+                        </div>
+                    </div>
+                    <div class="profile-badges" id="profileBadgesList">
+                        <!-- Badges will be populated by JavaScript -->
+                    </div>
+                    <button class="btn btn-primary btn-full-width">Edit Profile</button>
+                </div>
+            </div>
+            <div class="profile-right">
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="skills-offering">Skills Offering</button>
+                    <button class="tab-btn" data-tab="skills-seeking">Skills Seeking</button>
+                    <button class="tab-btn" data-tab="reviews">Reviews</button>
+                    <button class="tab-btn" data-tab="achievements">Achievements</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="skills-offering">
+                        <div class="skills-list" id="offeringSkills">
+                            <!-- Skills will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="skills-seeking">
+                        <div class="skills-list" id="seekingSkills">
+                            <!-- Skills will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="reviews">
+                        <div class="reviews-list" id="userReviews">
+                            <!-- Reviews will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="achievements">
+                        <div class="achievements-showcase" id="allBadges">
+                            <!-- All badges will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trades Page -->
+    <div id="tradesPage" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>My Trades</h1>
+                <p>Manage your skill exchange activities</p>
+            </div>
+            <div class="trades-filters">
+                <button class="filter-btn active" data-filter="all">All Trades</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="in_progress">In Progress</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+            <div class="trades-list" id="tradesList">
+                <!-- Trades will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Page -->
+    <div id="adminPage" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Admin Dashboard</h1>
+                <p>Manage platform users, skills, and activities</p>
+            </div>
+            <div class="admin-stats">
+                <div class="admin-stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="admin-stat-info">
+                        <h3>1,234</h3>
+                        <p>Total Users</p>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <i class="fas fa-book"></i>
+                    <div class="admin-stat-info">
+                        <h3>567</h3>
+                        <p>Total Skills</p>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <i class="fas fa-handshake"></i>
+                    <div class="admin-stat-info">
+                        <h3>2,891</h3>
+                        <p>Total Trades</p>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="admin-stat-info">
+                        <h3>4.8</h3>
+                        <p>Avg Rating</p>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-content">
+                <div class="admin-section">
+                    <h2>Recent Users</h2>
+                    <div class="admin-table">
+                        <div class="table-header">
+                            <span>User</span>
+                            <span>Email</span>
+                            <span>Trades</span>
+                            <span>Rating</span>
+                            <span>Actions</span>
+                        </div>
+                        <div class="table-body" id="adminUsersTable">
+                            <!-- Admin users will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat -->
+    <div id="floatingChat" class="floating-chat hidden">
+        <div class="chat-header">
+            <div class="chat-user">
+                <img id="chatAvatar" src="" alt="Chat User">
+                <div class="chat-user-info">
+                    <span id="chatUserName">User</span>
+                    <span class="chat-status">Online</span>
+                </div>
+            </div>
+            <div class="chat-controls">
+                <button id="minimizeChat" class="chat-control-btn">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button id="closeChat" class="chat-control-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be populated by JavaScript -->
+            </div>
+            <div class="typing-indicator hidden" id="typingIndicator">
+                <span>User is typing...</span>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message..." class="form-control">
+            <button id="sendMessage" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="authModalTitle">Sign In</h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="authForm">
+                    <div class="form-group">
+                        <input type="email" id="authEmail" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="authPassword" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="form-group register-only hidden">
+                        <input type="text" id="authName" class="form-control" placeholder="Full Name">
+                    </div>
+                    <div class="form-group register-only hidden">
+                        <input type="text" id="authUsername" class="form-control" placeholder="Username">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width" id="authSubmit">
+                        Sign In
+                    </button>
+                </form>
+                <div class="auth-switch">
+                    <p>
+                        <span id="authSwitchText">Don't have an account?</span>
+                        <a href="#" id="authSwitchLink">Sign up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skill Detail Modal -->
+    <div id="skillModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2 id="skillModalTitle">Skill Details</h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="skill-detail-content" id="skillDetailContent">
+                    <!-- Skill details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trade Request Modal -->
+    <div id="tradeModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request Trade</h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="tradeForm">
+                    <div class="form-group">
+                        <label class="form-label">What skill are you offering?</label>
+                        <select id="offerSkill" class="form-control" required>
+                            <option value="">Select a skill...</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">What skill do you want to learn?</label>
+                        <input type="text" id="requestSkill" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message (optional)</label>
+                        <textarea id="tradeMessage" class="form-control" rows="3" placeholder="Tell them why you'd like to make this trade..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">
+                        Send Trade Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
